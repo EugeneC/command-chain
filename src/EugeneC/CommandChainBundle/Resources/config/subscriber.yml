@@ -1,0 +1,12 @@
+services:
+    eugene_c_command_chain.command.subscriber:
+        class: EugeneC\CommandChainBundle\EventSubscriber\CommandChainSubscriber
+        arguments: ['@eugene_c_command_chain.composite.list', '@event_dispatcher']
+        tags:
+            - { name: kernel.event_subscriber, event: console.command }
+
+    eugene_c_command_chain.chain_events.subscriber:
+        class: EugeneC\CommandChainBundle\EventSubscriber\ChainEventsSubscriber
+        arguments: ['@logger']
+        tags:
+            - { name: kernel.event_subscriber }

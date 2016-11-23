@@ -1,0 +1,25 @@
+# This file is auto-generated during the composer install
+parameters:
+    #database
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: command_chain
+    database_user: user
+    database_password: password
+
+    #mail
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+
+    #sender
+    sender_email: support@command-chain.com
+    sender_name: Command chain Team
+
+    #locale
+    locale: en
+
+    #secret keys
+    secret: c9cbfc7964d56057af94c374f2749337adfd3aee

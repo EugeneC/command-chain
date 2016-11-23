@@ -1,0 +1,7 @@
+imports:
+    - { resource: subscriber.yml }
+
+services:
+    eugene_c_command_chain.composite.list:
+        class: EugeneC\CommandChainBundle\Composite\CommandChainList
+        arguments: ["%eugene_c_command_chain.config.chains%"]
