@@ -1,6 +1,8 @@
 <?php
 namespace EugeneC\CommandChainBundle\Composite;
 
+use EugeneC\CommandChainBundle\DataTransformer\ChainToInputParametersDataTransformer;
+
 /**
  * Class CommandChainList container for chains configuration
  */
@@ -64,16 +66,11 @@ class CommandChainList implements CommandChainListInterface
      */
     public function getChildren($commandName)
     {
+        $transformer = new ChainToInputParametersDataTransformer();
         $children = [];
         foreach ($this->chainList as $chain) {
             if ($commandName === $chain['main']) {
-                $inputParameters = ['command' => $chain['child']];
-                if (array_key_exists('parameters', $chain)) {
-                    foreach ($chain['parameters'] as $parameter) {
-                        $inputParameters[$parameter['name']] = $parameter['value'];
-                    }
-                }
-                $children[] = $inputParameters;
+                $children[] = $transformer->compose($chain);
             }
         }
 
